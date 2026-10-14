@@ -1,0 +1,13 @@
+{
+  "files_found": 585,
+  "files_parsed_ok": 585,
+  "files_skipped": 0,
+  "skipped_files": [],
+  "total_rows": 213525,
+  "unique_grid_cells": 585,
+  "date_range_min": "2025-01-01",
+  "date_range_max": "2025-12-31",
+  "missing_temp_mean": 0,
+  "missing_precip_sum": 0,
+  "missing_wind_max": 0
+}

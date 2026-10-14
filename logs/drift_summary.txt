@@ -1,0 +1,37 @@
+=======================================================
+DRIFT MONITORING REPORT  (DEMONSTRATION)
+=======================================================
+Generated   : 2026-10-14T07:27:29.681027+00:00
+Reference   : Jan-Jun 2025  (49,658 records)
+Current     : Jul-Dec 2025  (51,865 records)
+
+NOTE: This uses a temporal split on the same year to
+demonstrate the method. Real monitoring would compare
+training data against newly collected production data.
+
+───────────────────────────────────────────────────────
+NUMERIC FEATURE DRIFT (Kolmogorov-Smirnov test)
+───────────────────────────────────────────────────────
+    OK     hour_of_day                       KS=0.0144  p=0.0001
+    OK     day_of_week                       KS=0.0116  p=0.0021
+    OK     number_of_vehicles                KS=0.0023  p=0.9995
+    OK     number_of_casualties              KS=0.0024  p=0.9982
+    OK     speed_limit                       KS=0.0077  p=0.1008
+  ! DRIFT  wx_temp_mean_c                    KS=0.2537  p=0.0000
+  ! DRIFT  wx_precip_mm                      KS=0.1648  p=0.0000
+  ! DRIFT  wx_wind_max_kmh                   KS=0.1304  p=0.0000
+
+───────────────────────────────────────────────────────
+CATEGORICAL DRIFT (Chi-square test)
+───────────────────────────────────────────────────────
+  ! DRIFT  road_type_label                   chi2=13.81  p=0.0168
+  ! DRIFT  light_conditions_label            chi2=587.90  p=0.0000
+  ! DRIFT  weather_conditions_label          chi2=1791.19  p=0.0000
+  ! DRIFT  road_surface_conditions_label     chi2=2427.59  p=0.0000
+  ! DRIFT  urban_or_rural_area_label         chi2=7.01  p=0.0300
+
+───────────────────────────────────────────────────────
+Drifted numeric features   : 3
+Drifted categorical features: 5
+Retraining triggered        : No (demonstration only)
+───────────────────────────────────────────────────────

@@ -1,0 +1,59 @@
+{
+  "trained_at": "2026-10-14T07:02:51.246009+00:00",
+  "mlflow_run_id": "e205b2d40f6f43fc87b5f27485d4058b",
+  "model_type": "RandomForestClassifier",
+  "target_column": "collision_severity",
+  "severity_classes": {
+    "1": "Fatal",
+    "2": "Serious",
+    "3": "Slight"
+  },
+  "numeric_features": [
+    "hour_of_day",
+    "day_of_week",
+    "month",
+    "is_weekend",
+    "number_of_vehicles",
+    "number_of_casualties",
+    "speed_limit",
+    "wx_temp_mean_c",
+    "wx_precip_mm",
+    "wx_wind_max_kmh"
+  ],
+  "categorical_features": [
+    "road_type_label",
+    "light_conditions_label",
+    "weather_conditions_label",
+    "road_surface_conditions_label",
+    "junction_detail_label",
+    "urban_or_rural_area_label"
+  ],
+  "all_features": [
+    "hour_of_day",
+    "day_of_week",
+    "month",
+    "is_weekend",
+    "number_of_vehicles",
+    "number_of_casualties",
+    "speed_limit",
+    "wx_temp_mean_c",
+    "wx_precip_mm",
+    "wx_wind_max_kmh",
+    "road_type_label",
+    "light_conditions_label",
+    "weather_conditions_label",
+    "road_surface_conditions_label",
+    "junction_detail_label",
+    "urban_or_rural_area_label"
+  ],
+  "n_features": 16,
+  "dataset_size": 101523,
+  "n_train": 81218,
+  "n_test": 20305,
+  "test_size": 0.2,
+  "random_seed": 42,
+  "accuracy": 0.678848,
+  "macro_f1": 0.377838,
+  "model_file": "models\\severity_model.pkl",
+  "note": "Severity codes: 1=Fatal, 2=Serious, 3=Slight. Class imbalance handled with class_weight='balanced'. Do not rely on accuracy alone \u2014 examine per-class metrics."
+}

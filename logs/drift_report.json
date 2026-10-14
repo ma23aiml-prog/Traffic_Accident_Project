@@ -1,0 +1,133 @@
+{
+  "generated_at": "2026-10-14T07:27:29.681027+00:00",
+  "note": "DEMONSTRATION ONLY. Reference=Jan-Jun 2025, Current=Jul-Dec 2025. This split is used to demonstrate the drift detection method, not to claim actual production drift has been observed.",
+  "reference_n": 49658,
+  "current_n": 51865,
+  "numeric_drift": {
+    "hour_of_day": {
+      "ks_stat": 0.014382,
+      "p_value": 5.5e-05,
+      "drifted": false,
+      "threshold_ks": 0.1,
+      "threshold_pval": 0.05
+    },
+    "day_of_week": {
+      "ks_stat": 0.011636,
+      "p_value": 0.002061,
+      "drifted": false,
+      "threshold_ks": 0.1,
+      "threshold_pval": 0.05
+    },
+    "number_of_vehicles": {
+      "ks_stat": 0.002258,
+      "p_value": 0.999472,
+      "drifted": false,
+      "threshold_ks": 0.1,
+      "threshold_pval": 0.05
+    },
+    "number_of_casualties": {
+      "ks_stat": 0.002435,
+      "p_value": 0.998159,
+      "drifted": false,
+      "threshold_ks": 0.1,
+      "threshold_pval": 0.05
+    },
+    "speed_limit": {
+      "ks_stat": 0.007667,
+      "p_value": 0.100833,
+      "drifted": false,
+      "threshold_ks": 0.1,
+      "threshold_pval": 0.05
+    },
+    "wx_temp_mean_c": {
+      "ks_stat": 0.253704,
+      "p_value": 0.0,
+      "drifted": true,
+      "threshold_ks": 0.1,
+      "threshold_pval": 0.05
+    },
+    "wx_precip_mm": {
+      "ks_stat": 0.164826,
+      "p_value": 0.0,
+      "drifted": true,
+      "threshold_ks": 0.1,
+      "threshold_pval": 0.05
+    },
+    "wx_wind_max_kmh": {
+      "ks_stat": 0.130366,
+      "p_value": 0.0,
+      "drifted": true,
+      "threshold_ks": 0.1,
+      "threshold_pval": 0.05
+    }
+  },
+  "categorical_drift": {
+    "road_type_label": {
+      "chi2_stat": 13.8141,
+      "p_value": 0.016835,
+      "drifted": true,
+      "threshold_pval": 0.05
+    },
+    "light_conditions_label": {
+      "chi2_stat": 587.8981,
+      "p_value": 0.0,
+      "drifted": true,
+      "threshold_pval": 0.05
+    },
+    "weather_conditions_label": {
+      "chi2_stat": 1791.195,
+      "p_value": 0.0,
+      "drifted": true,
+      "threshold_pval": 0.05
+    },
+    "road_surface_conditions_label": {
+      "chi2_stat": 2427.5942,
+      "p_value": 0.0,
+      "drifted": true,
+      "threshold_pval": 0.05
+    },
+    "urban_or_rural_area_label": {
+      "chi2_stat": 7.0149,
+      "p_value": 0.029973,
+      "drifted": true,
+      "threshold_pval": 0.05
+    }
+  },
+  "severity_shift": {
+    "1": {
+      "reference_pct": 1.39,
+      "current_pct": 1.47,
+      "abs_change_pct": 0.08
+    },
+    "2": {
+      "reference_pct": 24.66,
+      "current_pct": 24.96,
+      "abs_change_pct": 0.3
+    },
+    "3": {
+      "reference_pct": 73.95,
+      "current_pct": 73.57,
+      "abs_change_pct": 0.38
+    }
+  },
+  "summary": {
+    "total_numeric_tested": 8,
+    "numeric_drifted": 3,
+    "drifted_numeric_features": [
+      "wx_temp_mean_c",
+      "wx_precip_mm",
+      "wx_wind_max_kmh"
+    ],
+    "total_categorical_tested": 5,
+    "categorical_drifted": 5,
+    "drifted_cat_features": [
+      "road_type_label",
+      "light_conditions_label",
+      "weather_conditions_label",
+      "road_surface_conditions_label",
+      "urban_or_rural_area_label"
+    ],
+    "retraining_triggered": false,
+    "retraining_criteria": "Retrain when: (1) \u22652 top-5 numeric features show KS>0.15 AND \u22651000 new labelled records are available, OR (2) macro-F1 on new held-out data falls below 0.45."
+  }
+}

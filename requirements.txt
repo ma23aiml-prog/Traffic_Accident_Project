@@ -1,0 +1,41 @@
+# Traffic Accident Severity Analytics — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# ── Core data ──────────────────────────────────────────────
+pandas==2.2.3
+numpy==1.26.4
+openpyxl==3.1.5          # read .xlsx files (DfT lookup tables)
+requests==2.32.3
+
+# ── Machine learning ───────────────────────────────────────
+scikit-learn==1.5.2
+scipy==1.13.1
+
+# ── Experiment tracking ────────────────────────────────────
+# mlflow-tracing 3.17.1 is pre-installed in this environment; pin to match.
+# Set env var MLFLOW_DISABLE_AGENT_HINT=1 to silence agent hints at runtime.
+mlflow==3.17.1
+
+# ── Dashboard ──────────────────────────────────────────────
+streamlit==1.38.0
+plotly==5.24.1
+folium==0.17.0
+streamlit-folium==0.22.0
+
+# ── API ────────────────────────────────────────────────────
+fastapi==0.115.0
+uvicorn[standard]==0.31.0
+pydantic==2.9.2
+
+# ── Database ───────────────────────────────────────────────
+# SQLite ships with Python — no extra package needed.
+# For PostgreSQL (optional):
+# psycopg2-binary==2.9.10
+
+# ── Visualisation ──────────────────────────────────────────
+matplotlib==3.9.2
+seaborn==0.13.2
+
+# ── Testing ────────────────────────────────────────────────
+pytest==8.3.3
+httpx==0.27.2             # async test client for FastAPI

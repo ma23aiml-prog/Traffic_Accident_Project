@@ -1,0 +1,68 @@
+version: "3.9"
+
+# ─────────────────────────────────────────────────────────────────────────
+# docker-compose.yml
+# Runs: FastAPI prediction service + Streamlit dashboard
+#
+# Usage:
+#   docker compose up --build
+#
+# Access:
+#   API:       http://localhost:8000
+#   API docs:  http://localhost:8000/docs
+#   Dashboard: http://localhost:8501
+#
+# Prerequisites:
+#   1. Run the Phase 1 pipeline to produce:
+#        data/cleaned/accident_severity_dataset.csv
+#   2. Run train_model.py to produce:
+#        models/severity_model.pkl
+#        models/metadata.json
+# ─────────────────────────────────────────────────────────────────────────
+
+services:
+
+  # ── FastAPI prediction API ───────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: accident_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models:ro          # trained model (read-only)
+      - ./data/cleaned:/app/data/cleaned:ro
+    environment:
+      MODEL_PATH: models/severity_model.pkl
+      API_HOST:   0.0.0.0
+      API_PORT:   "8000"
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout:  10s
+      retries:  3
+    restart: unless-stopped
+
+  # ── Streamlit analytics dashboard ────────────────────────────────────────
+  dashboard:
+    image: python:3.11-slim
+    container_name: accident_dashboard
+    working_dir: /app
+    volumes:
+      - .:/app                            # full project (dashboard needs data)
+    ports:
+      - "8501:8501"
+    environment:
+      PYTHONPATH: /app
+    command: >
+      bash -c "pip install --quiet streamlit pandas plotly &&
+               streamlit run dashboard/app.py
+               --server.port 8501
+               --server.address 0.0.0.0
+               --server.headless true"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped

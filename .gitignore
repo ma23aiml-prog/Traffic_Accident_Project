@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables (contain secrets)
+.env
+
+# Generated data and models (large files)
+data/cleaned/*.db
+*.db
+
+# MLflow experiment runs (can be large)
+mlruns/
+
+# Logs containing details
+logs/*.log
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Test cache
+.pytest_cache/
+# Raw and generated datasets
+data/raw/
+data/processed/
+data/interim/
+
+# Trained model artifacts (large files)
+models/*.pkl
+
+# Generated evaluation and monitoring outputs (optional)
+# Keep reports and plots if you want them in GitHub
+# logs/*.json
+# logs/*.txt
+
+# Local databases and secrets
+*.sqlite
+*.sqlite3
+.env.*
+
+# Allow the example environment template
+!.env.example
+# Datasets and generated data
+data/raw/
+data/processed/
+data/cleaned/
+data/rejected/
+data/staging/
+data/*.csv
+data/*.db
+
+# Large trained models
+models/*.pkl
+
+# Environment files and secrets
+.env.*
+!.env.example
+.env
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
